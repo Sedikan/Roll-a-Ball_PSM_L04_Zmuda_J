@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class collectible : MonoBehaviour
 {
+    public int score = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +17,16 @@ public class collectible : MonoBehaviour
     {
         transform.Rotate(40 * Time.deltaTime, 0, 0);
     }
-
-
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Player")) 
+        if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<MovementController>().score += 1;
-            Debug.Log("Zdoby³eœ punkt! \n Score: " + score);
+            other.gameObject.GetComponent<MovementController>().CollectScore();
+            Debug.Log("Zdoby³eœ punkt!");
             gameObject.SetActive(false);
-            
-        }
-    
-    }
 
+        }
+
+    }
 }

@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public int score = 0;
+    public int score;
     public float moveSpeed = 5f;
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-       
     }
 
     void FixedUpdate()
     {
         Move();
+        if(score >=6)
+        {
+            Debug.Log("Wygra³eœ!!!");
+        }
+
     }
 
     void Move()
@@ -36,6 +39,11 @@ public class MovementController : MonoBehaviour
                                                         //Vector3 move = new Vector3(moveX, 0, moveY);
                                                         //rb.AddForce(move * moveSpeed);
     }
+    public void CollectScore()
+    {
+        score += 1;
+        Debug.Log("Zdoby³eœ punkt, masz ich teraz " + score);
+    }
+    
 
-  
 }

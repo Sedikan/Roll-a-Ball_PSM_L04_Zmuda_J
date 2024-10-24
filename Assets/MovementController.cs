@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
+
 {
     public int score;
     public float moveSpeed = 5f;
+    public float scaleSpeed = 0.5f;
     private Rigidbody rb;
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,13 +18,20 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        if(score >=6)
+        if (score >= 6)
         {
             Debug.Log("Wygra³eœ!!!");
         }
+        if (Input.GetKey(KeyCode.T))
+        { transform.localScale += Vector3.one * -scaleSpeed * Time.deltaTime; }
+        if (Input.GetKey(KeyCode.G))
+        { transform.localScale += Vector3.one * scaleSpeed * Time.deltaTime; }
 
+        if (transform.localScale.x < 0.1f) {
+            { transform.localScale = new Vector3(0.1f, 0.1f, 0.1f); }
+
+        }
     }
-
     void Move()
     {
         if (Input.GetKey(KeyCode.W))

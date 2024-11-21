@@ -6,14 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject OptionsPanel;
     public GameObject Menu;
-    public void Update()
-    {
-        PlayGame();
-        ShowOptions();
-        HideOptions();
-        QuitGame();
-    }
-
+    
     public void PlayGame()
     {
         SceneManager.LoadScene("SampleScene");

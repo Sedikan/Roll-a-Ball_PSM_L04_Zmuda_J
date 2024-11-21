@@ -24,7 +24,6 @@ public class MovementController : MonoBehaviour
 
         HandleScaling();
  
-        CollectScore();
     }
 
     void Move()

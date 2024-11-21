@@ -21,7 +21,10 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+
         HandleScaling();
+ 
+        CollectScore();
     }
 
     void Move()

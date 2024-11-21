@@ -15,6 +15,7 @@ public class Collectible : MonoBehaviour
     void Update()
     {
         RotateCollectible();
+        PlayCollectSound();
     }
 
     private void RotateCollectible()

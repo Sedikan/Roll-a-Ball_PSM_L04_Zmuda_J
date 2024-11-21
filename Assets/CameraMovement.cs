@@ -5,15 +5,15 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Transform player;
-    public Vector3 camera;
+    public Vector3 kamera;
     void Start()
     {
-        camera = player.transform.position - transform.position;
+        kamera = player.transform.position - transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position - camera ;
+        transform.position = player.transform.position - kamera ;
     }
 }

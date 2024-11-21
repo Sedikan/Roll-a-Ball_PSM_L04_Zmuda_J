@@ -2,31 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class collectible : MonoBehaviour
+public class Collectible : MonoBehaviour
 {
     public int score = 1;
+    private AudioSource audioSource;
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        RotateCollectible();
+    }
+
+    private void RotateCollectible()
     {
         transform.Rotate(40 * Time.deltaTime, 0, 0);
     }
+
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<MovementController>().CollectScore();
-            Debug.Log("Zdoby³eœ punkt!");
-            gameObject.SetActive(false);
-
+            Collect(other);
         }
-
     }
+
+    private void Collect(Collider player)
+    {
+        player.gameObject.GetComponent<MovementController>().CollectScore();
+        Debug.Log("Zdoby³eœ punkt!");
+
+        PlayCollectSound();
+
+        gameObject.SetActive(false);
+    }
+
+    private void PlayCollectSound()
+    {
+        audioSource.Play(); 
+    }
+
 }

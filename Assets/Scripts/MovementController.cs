@@ -8,9 +8,11 @@ public class MovementController : MonoBehaviour
     public int score;
     public float moveSpeed = 5f;
     public float scaleSpeed = 0.5f;
+    public float jumpForce = 5f;
     public Text scoreText;
 
     private Rigidbody rb;
+    private bool isGrounded = true;
 
     void Start()
     {
@@ -21,9 +23,16 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-
         HandleScaling();
- 
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
     }
 
     void Move()
@@ -58,12 +67,20 @@ public class MovementController : MonoBehaviour
     public void CollectScore()
     {
         score += 1;
-        Debug.Log("Zdoby≥eú punkt, masz ich teraz " + score);
+        Debug.Log("Zdoby≈Çe≈õ punkt, masz ich teraz " + score);
         UpdateScoreText();
     }
 
     void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
     }
 }

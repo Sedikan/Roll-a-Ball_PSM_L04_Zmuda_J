@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/scene2.unity
     guid: c97858fd106e73344b4859b360bc6799
   - enabled: 1
+    path: Assets/Scenes/Poziom3.unity
+    guid: ca7cc26002997824abc2df1a31dbea3e
+  - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 1d2193641c8a3d54fbe9b20ed8db8b9d
   m_configObjects: {}
